@@ -3,7 +3,7 @@
 #
 # See LICENSE file for copyright and license details
 
-INTERACTIVE=True
+INTERACTIVE=False
 ASK_TO_REBOOT=0
 BLACKLIST=/etc/modprobe.d/raspi-blacklist.conf
 CONFIG=/boot/config.txt
@@ -308,7 +308,7 @@ do_change_locale() {
 }
 
 do_change_timezone() {
-  dpkg-reconfigure tzdata
+  dpkg-reconfigure -f noninteractive tzdata # make reconfiguration noninteractive
 }
 
 get_wifi_country() {
@@ -1324,6 +1324,12 @@ do
     INTERACTIVE=False
     do_apply_os_config
     exit $?
+    ;;
+  --set-timezone=*)
+    INTERACTIVE=False
+    echo "$i" > /etc/timezone
+    do_change_timezone
+    exit 0
     ;;
   nonint)
     INTERACTIVE=False
