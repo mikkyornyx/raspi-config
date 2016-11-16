@@ -2,6 +2,7 @@
 # Part of raspi-config https://github.com/RPi-Distro/raspi-config
 #
 # See LICENSE file for copyright and license details
+# Forked by Michailas Ornovskis, Stallion AS
 
 INTERACTIVE=False
 ASK_TO_REBOOT=0
