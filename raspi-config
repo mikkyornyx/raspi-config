@@ -1335,6 +1335,7 @@ do
     INTERACTIVE=False
     HOSTNAME=`echo $i | sed 's/[-a-zA-Z0-9]*=//'`
     do_hostname $HOSTNAME
+    ;;
   nonint)
     INTERACTIVE=False
     $@
