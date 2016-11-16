@@ -1311,7 +1311,8 @@ do
     ;;
   --memory-split=*)
     OPT_MEMORY_SPLIT=`echo $i | sed 's/[-a-zA-Z0-9]*=//'`
-    printf "Not currently supported\n" + OPT_MEMORY_SPLIT
+    echo OPT_MEMORY_SPLIT
+    printf "Not currently supported\n"
     exit 1
     ;;
   --expand-rootfs)
