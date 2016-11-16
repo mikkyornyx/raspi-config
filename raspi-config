@@ -1327,6 +1327,8 @@ do
     ;;
   --set-timezone=*)
     INTERACTIVE=False
+    echo $1
+    echo "$1"
     echo "$i" > /etc/timezone
     do_change_timezone
     exit 0
