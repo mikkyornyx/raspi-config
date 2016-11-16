@@ -1331,6 +1331,10 @@ do
     do_change_timezone
     exit 0
     ;;
+  --set-hostname=*)
+    INTERACTIVE=False
+    HOSTNAME=`echo $i | sed 's/[-a-zA-Z0-9]*=//'`
+    do_hostname(HOSTNAME)
   nonint)
     INTERACTIVE=False
     $@
