@@ -1311,7 +1311,6 @@ do
     ;;
   --memory-split=*)
     OPT_MEMORY_SPLIT=`echo $i | sed 's/[-a-zA-Z0-9]*=//'`
-    echo $OPT_MEMORY_SPLIT
     printf "Not currently supported\n"
     exit 1
     ;;
@@ -1328,8 +1327,8 @@ do
     ;;
   --set-timezone=*)
     INTERACTIVE=False
-    echo $i > /etc/timezone
-    #do_change_timezone
+    echo $i | sed 's/[-a-zA-Z0-9]*=//' > /etc/timezone
+    do_change_timezone
     exit 0
     ;;
   nonint)
