@@ -1,0 +1,15 @@
+#!/bin/bash
+if ! dpkg -l autossh > /dev/null; then
+    logger 'first run, installing autossh package from file'
+    dpkg -i /var/cache/apt/archives/autossh_1.4d-1_armhf.deb
+    mkdir -p /root/.ssh
+    cd /root/.ssh/
+    cp /var/autossh_files/* .
+    chmod 0600 id_rsa
+fi
+if ! dpkg -l psmisc > /dev/null; then
+    logger 'first run, installing psmisc package from file'
+    gpkg -i /var/cache/apt/archives/psmisc_22.21-2_armhf.deb
+fi
+PORT = (20000 + RANDOM % 1000)
+/usr/bin/autossh -M 0 -N -R $PORT:127.0.0.1:22 autossh@redirector
